@@ -37,33 +37,36 @@
     </p>
 
     <div class="entries">
-      <div class="entry primary-entry">
+      <div class="entry primary-entry" id="mainEntryCard">
         <div class="entry-info">
-          <span class="entry-label">主线路</span>
-          <span class="entry-host">cn-xy.starryfrp.com:23660</span>
+          <span class="entry-label">
+            <span class="live-dot" id="liveDot"></span>
+            <span id="liveLabel">正在获取实时地址…</span>
+          </span>
+          <span class="entry-host" id="mainHost">—</span>
         </div>
-        <a class="btn primary lg" id="mainEntry" href="http://cn-xy.starryfrp.com:23660" rel="noopener">
+        <a class="btn primary lg" id="mainBtn" href="#" rel="noopener">
           进入修复站
           <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M5 12h13m0 0-5-5m5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
 
-      <div class="entry alt-entry">
+      <div class="entry alt-entry" id="altEntryCard">
         <div class="entry-info">
-          <span class="entry-label">备用线路</span>
-          <span class="entry-host">111.170.175.250:23660</span>
+          <span class="entry-label">备用线路（HTTP 镜像）</span>
+          <span class="entry-host" id="altHost">—</span>
         </div>
         <div class="entry-actions">
-          <a class="btn ghost" id="altEntry" href="http://111.170.175.250:23660" rel="noopener">备用入口</a>
-          <button class="btn ghost icon" id="copyBtn" title="复制主线路链接" aria-label="复制链接">
+          <a class="btn ghost" id="altBtn" href="#" rel="noopener">备用入口</a>
+          <button class="btn ghost icon" id="copyBtn" title="复制实时链接" aria-label="复制链接">
             <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M15 5H6a2 2 0 0 0-2 2v9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
           </button>
         </div>
       </div>
     </div>
 
-    <p class="entry-tip">
-      修复站通过 <b>TCP 隧道</b>直连自建服务器，首次打开可能稍慢；若主线路无响应，请切换到备用线路。
+    <p class="entry-tip" id="entryTip">
+      页面每 15 秒从本地 <b>cpolar</b> 隧道自动拉取一次公网地址，隧道重启后地址变化会自动同步；如果当前显示的入口打不开，稍等几秒刷新一下页面即可。
     </p>
   </section>
 
@@ -159,7 +162,7 @@
   <section class="cta">
     <h2>现在就试试</h2>
     <p>从一张模糊的老照片开始。</p>
-    <a class="btn primary lg" href="http://cn-xy.starryfrp.com:23660" rel="noopener">进入 MAX-PX 修复站</a>
+    <a class="btn primary lg" id="ctaBtn" href="#" rel="noopener">进入 MAX-PX 修复站</a>
   </section>
 </main>
 

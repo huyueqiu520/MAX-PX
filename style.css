@@ -167,7 +167,29 @@ a { color: inherit; }
 }
 
 .entry-info { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
-.entry-label { font-size: 11px; letter-spacing: 1.4px; color: var(--muted); }
+.entry-label { font-size: 11px; letter-spacing: 1.4px; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #8b95a7;
+  box-shadow: 0 0 6px #8b95a7;
+  transition: background 0.25s, box-shadow 0.25s;
+}
+.live-dot.live {
+  background: #b5f24c;
+  box-shadow: 0 0 10px #b5f24c;
+  animation: pulse 1.8s infinite;
+}
+.live-dot.offline {
+  background: #ff6b6b;
+  box-shadow: 0 0 6px rgba(255,107,107,0.6);
+}
+.live-dot.stale {
+  background: #e5d18a;
+  box-shadow: 0 0 6px rgba(229,209,138,0.6);
+}
 .entry-host {
   font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
   font-size: 13.5px;
