@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAX-PX · 高清图片修复</title>
+<meta name="description" content="MAX-PX 高清图片修复：C++ 原生图像引擎、异步任务队列、独立用户空间。把模糊照片还原到高清。">
+<meta name="theme-color" content="#07090d">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="aurora"></div>
+<div class="grid-bg"></div>
+
+<header class="nav">
+  <div class="brand">
+    <span class="brand-mark">MAX</span><span class="brand-mark alt">PX</span>
+    <span class="brand-tag">高清修复</span>
+  </div>
+  <div class="nav-links">
+    <a href="#features">特性</a>
+    <a href="#how">流程</a>
+    <a href="#sponsor">赞赏</a>
+    <a class="gh" href="https://github.com/huyueqiu520/MAX-PX" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-badge">
+      <i></i> C++ NATIVE ENGINE · ASYNC QUEUE · USER ISOLATION
+    </div>
+    <h1>把模糊照片<br><em>还原到高清</em></h1>
+    <p class="hero-sub">
+      基于 C++ 原生图像引擎：自适应降噪、Lanczos3 重采样、边缘锐化。<br>
+      提交任务即返回，异步处理，结果只保存在你自己的会话空间。
+    </p>
+
+    <div class="entries">
+      <div class="entry primary-entry">
+        <div class="entry-info">
+          <span class="entry-label">主线路</span>
+          <span class="entry-host">cn-xy.starryfrp.com:23660</span>
+        </div>
+        <a class="btn primary lg" id="mainEntry" href="http://cn-xy.starryfrp.com:23660" rel="noopener">
+          进入修复站
+          <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M5 12h13m0 0-5-5m5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="entry alt-entry">
+        <div class="entry-info">
+          <span class="entry-label">备用线路</span>
+          <span class="entry-host">111.170.175.250:23660</span>
+        </div>
+        <div class="entry-actions">
+          <a class="btn ghost" id="altEntry" href="http://111.170.175.250:23660" rel="noopener">备用入口</a>
+          <button class="btn ghost icon" id="copyBtn" title="复制主线路链接" aria-label="复制链接">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M15 5H6a2 2 0 0 0-2 2v9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <p class="entry-tip">
+      修复站通过 <b>TCP 隧道</b>直连自建服务器，首次打开可能稍慢；若主线路无响应，请切换到备用线路。
+    </p>
+  </section>
+
+  <section class="stats">
+    <div class="stat"><b>1×–4×</b><span>任意倍率放大</span></div>
+    <div class="stat"><b>异步</b><span>提交即返回任务号</span></div>
+    <div class="stat"><b>隔离</b><span>会话独立存储</span></div>
+    <div class="stat"><b>免费</b><span>无需注册登录</span></div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="sec-head">
+      <span class="kicker">FEATURES</span>
+      <h2>不只是放大，是真正的修复</h2>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="card-ico">◈</div>
+        <h3>自适应降噪</h3>
+        <p>根据局部方差判断平坦区与边缘，压制噪点和 JPEG 压缩块，同时保留真实纹理。</p>
+      </article>
+      <article class="card">
+        <div class="card-ico">◇</div>
+        <h3>Lanczos3 重采样</h3>
+        <p>三次插值核 + 归一边缘权重，放大后线条依旧干净，不产生明显锯齿与振铃。</p>
+      </article>
+      <article class="card">
+        <div class="card-ico">◆</div>
+        <h3>边缘细节增强</h3>
+        <p>非锐化掩模按照片 / 动漫 / 文字场景调整强度，让眼睛、文字和轮廓更清晰。</p>
+      </article>
+      <article class="card">
+        <div class="card-ico">⬡</div>
+        <h3>异步任务队列</h3>
+        <p>上传后立即返回任务号，工作线程池后台处理，页面实时轮询进度，无需等待响应。</p>
+      </article>
+      <article class="card">
+        <div class="card-ico">⬢</div>
+        <h3>用户空间隔离</h3>
+        <p>每个访客拥有独立会话目录，任务与结果仅本人可见、可下载，互不干扰。</p>
+      </article>
+      <article class="card">
+        <div class="card-ico">◌</div>
+        <h3>自动清理</h3>
+        <p>结果文件默认保留 2 小时，过期自动删除；单用户并发与每日次数均有配额保护。</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="how" id="how">
+    <div class="sec-head">
+      <span class="kicker">WORKFLOW</span>
+      <h2>三步完成</h2>
+    </div>
+    <ol class="steps">
+      <li>
+        <span class="num">01</span>
+        <h3>打开修复站</h3>
+        <p>点击上方入口，通过 TCP 隧道进入自建服务，页面直接加载。</p>
+      </li>
+      <li>
+        <span class="num">02</span>
+        <h3>上传并选择倍率</h3>
+        <p>拖拽、点击或 Ctrl+V 粘贴图片，选择 1×–4× 放大和修复模式。</p>
+      </li>
+      <li>
+        <span class="num">03</span>
+        <h3>对比并下载</h3>
+        <p>处理完成后拖动中间滑杆查看前后差异，满意就直接下载高清图。</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="sponsor" id="sponsor">
+    <div class="sponsor-inner">
+      <div class="sponsor-text">
+        <span class="kicker">SPONSOR</span>
+        <h2>给狐狐一点奖励吧~</h2>
+        <p>MAX-PX 完全免费、无广告、无需登录。如果它帮你救回了一张珍贵的照片，欢迎扫码赞赏，支持服务器与带宽开销。</p>
+        <ul class="ticks">
+          <li>不收集上传图片，不做二次分发</li>
+          <li>结果文件定时销毁</li>
+          <li>所有处理均在自建 C++ 服务完成</li>
+        </ul>
+      </div>
+      <figure class="sponsor-qr">
+        <img src="./assets/reward.png" alt="赞赏码">
+        <figcaption>微信扫码 · 感谢支持</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>现在就试试</h2>
+    <p>从一张模糊的老照片开始。</p>
+    <a class="btn primary lg" href="http://cn-xy.starryfrp.com:23660" rel="noopener">进入 MAX-PX 修复站</a>
+  </section>
+</main>
+
+<footer>
+  <div>
+    <span class="brand-mark">MAX</span><span class="brand-mark alt">PX</span>
+    <span class="muted">· 高清图片修复</span>
+  </div>
+  <div class="foot-links">
+    <a href="https://github.com/huyueqiu520/MAX-PX" target="_blank" rel="noopener">GitHub 仓库</a>
+    <span>·</span>
+    <span>GitHub Pages 托管</span>
+    <span>·</span>
+    <span>后端：C++ / 异步队列 / 用户隔离</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" hidden></div>
+<script src="./app.js"></script>
+</body>
+</html>
